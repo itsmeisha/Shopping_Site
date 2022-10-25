@@ -1,0 +1,434 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+*{
+    margin:0;
+    padding:0;
+
+}
+body{
+     font-family: serif;
+     background-image: url(BACK.jpg);
+     background-size: cover;
+}
+nav{
+    background: #da57d3;
+    height:80px;
+    width:100%;
+}
+label.logo
+{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin:0 5px;
+}
+nav ul li a{
+    color:white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+a.active,a:hover{
+ background: #f55efa;
+ transition: .5s;
+}
+.checkbtn
+{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check
+{
+display: none;
+}
+
+.product-small-img img{
+    height: 92px;
+    margin:10px 0;
+    cursor:pointer;
+    display:block;
+    opacity:.6;
+}
+.product-small-img img:hover
+{
+    opacity:1;
+}
+.product-small-img{
+    float: left;
+}
+.product{
+
+margin-left: 40px;
+position :absolute;
+}
+.img-container img
+{
+    height: 500px;
+}
+.img-container
+{
+    float:right;
+    padding: 10px;
+}
+.container{
+                margin-top: 100px;
+            }
+            .newarrival
+            {
+                background:green;
+                width:50px;
+                color:white;
+                font-size: 12px;
+                font-weight:bold;
+
+            }
+            .col-md-7 h2{
+                color:#555;
+
+            }
+            .stars
+            {
+                height:15px;
+            }
+            .price
+            {
+                color:#FE980F;
+                font-size: 26px;
+                font-weight: bold;
+                padding-top:20px;
+            }
+            input{
+                border :1px solid #ccc;
+                font-weight: bold;
+                height:33px;
+                text-align:center;
+                width:30px;
+            }
+            .btn btn-default cart
+            {
+                background: #FE980F;
+                color:#ffffff;
+                font-size:15px;
+                margin-left:20px;
+            }
+@media (max-width:952px)
+{
+    label.logo{
+ font-size: 30px;
+ padding-left: 50px;
+    }
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+@media (max-width:858px)
+{
+
+    .checkbtn{
+        display: block;
+    }
+    ul {
+        position :absolute;
+        width:100%;
+        height: 90vh;
+        background: #2c3e50;
+        top: 80px;
+        left:-100%;
+        text-align: center;
+        z-index: 102;
+        transition: all .5s;
+    }
+    nav ul li{
+        display:block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a 
+    {
+        font-size:20px;
+    }
+a:hover ,a.active 
+{
+    background:none;
+    color:#f55efa;
+}
+#check:checked ~ ul
+{
+    left:0;
+}
+}
+.product-container{
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.product-box{
+    display: flex;
+    flex-grow: 0.5;
+    flex-direction: column;
+  align-items: center;
+    border: 1px solid #f7f7f7;
+    border-radius: 10px;
+    margin: 20px;
+}
+.product-img{
+    width:200px;
+    height: 210px;
+    margin: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.product-img img{
+    width:100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid #f3f3f3;
+}
+.p-name{
+    color: #727272;
+}
+.p-price{
+    color: #333333;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.product-box:hover{
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+.add-cart{
+    position: absolute;
+    right: -20px;
+    top: 10px;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #0b9d8a;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+    display: none;
+    animation: fade 0.3s;
+ 
+}
+.add-cart:hover{
+    background-color: #f76ae4;
+    transition: all ease 0.2s;
+}
+.product-box:hover .add-cart{
+    display: flex;
+}
+.form
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 102;
+}
+  .login-form,.sign-up-form{
+      width: 420px;
+      padding: 20px 10px;
+      background-color: #ffffff;
+      box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 5px;
+      position: relative;
+
+  }
+  .login-form form,.sign-up-form form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+  }
+  .login-form strong,.sign-up-form strong 
+  {
+      color: #272727;
+      font-size: 2rem ;
+      margin: 2px 2px 7px 7px;
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+  }
+  .login-form input,.sign-up-form input{
+      width: 90%;
+      height: 45px;
+      margin: 6px 0px;
+      padding: 0px 10px;
+      border :1px solid rgba(0,0,0,0.1);
+      outline: none;
+      border-radius: 7px;
+  }
+  .login-form input::placeholder,
+  .sign-up-form input::placeholder
+  {
+color: rgba(0,0,0,0.5);
+  }
+  .login-form input[type="submit"],
+  .sign-up-form input[type="submit"]
+  {
+      background-color: #0b9d8a;
+      color: #ffffff;
+      border: none;
+      outline: none;
+      text-transform: uppercase;
+      margin-top: 10px;
+      border-radius: 3px;
+      box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+  }
+  .form-btns
+  {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+  }
+  .form-btns a{
+      color: #4d4d4d;
+      font-size: 0.9rem;
+  }
+  .sign-up-btn
+  {
+      border-bottom: 1px solid #868686;
+      line-height: 16px;
+  }
+  .form-cancel
+  {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      color: #868686;
+  }
+  .login-form,
+  .sign-up-form,
+  .form{
+      display: none;
+  }
+  .login-active,
+  .login-active .login-form
+  {
+      display: flex;
+      animation: fade 0.3s; 
+  }
+  .sign-up-active,
+  .sign-up-active .sign-up-form
+  {
+      display: flex;
+      animation: fade 0.3s; 
+  }
+  @keyframes fade{
+   0%{
+       opacity: 0;
+   }   
+   100%{
+       opacity: 1;
+   }
+  }
+        </style>
+        <link rel="stylesheet" href="https ://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"/>
+        <script src="js.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" ></script>
+
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+            <label class="logo">Shopping</label>
+            <ul>
+                <li><a class="active" href="undex1.html"> Home</a></li>
+                <li><a href="n.html"> Man</a></li>
+                <li><a href="n1.html"> Women</a></li>
+                <li><a href="shop.html"> Shop</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+        <div class="product">
+            <div class="product-small-img" >
+                <img src="cr1.jpg" onclick="myfunction(this)">
+                <img src="lo.jpg" onclick="myfunction(this)">
+                <img src="lo10.jpg" onclick="myfunction(this)">
+                <img src="lo6.jpg" onclick="myfunction(this)">
+                <img src="lo13.jpg" onclick="myfunction(this)">
+                
+            </div>        
+            <div class="img-container">
+                <img id="imageBox" src="cr1.jpg">
+                </div>
+                </div>
+                </div>
+                <div class="col-md-7">
+                    <p class="newarrival text-center">NEW</p>
+                    <h2>Wommen's Skirt</h2>
+                    <p>Product Code : ISRC2021</p>
+                    <img src="stars.png" class="stars">
+                    <p class="price">RS 500</p>
+                    <p><b>Availability:</b> In stock</p>
+                    <p><b>Condition:</b> NEW</p>
+                    <p><b>Brand:</b> XYZ company</p>
+                    <label>
+                        Quantity:
+                    </label>
+                    <input type="text" value="1">
+                    <button type="button" class="btn btn-default cart">Add to cart </button>
+                            </div>
+                            </div>
+                            </div>
+        <script>
+            function myfunction(smallImg)
+            {
+                var fullImg = document.getElementById("imageBox");
+                fullImg.src = smallImg.src;
+            }
+        </script>
+    </body>
+</html>

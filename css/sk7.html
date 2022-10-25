@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*
+{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body{
+     font-family: serif;
+     background-image: url(BACK.jpg);
+     background-size: cover;
+}
+nav{
+    background: #da57d3;
+    height:80px;
+    width:100%;
+}
+label.logo
+{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin:0 5px;
+}
+nav ul li a{
+    color:white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+a.active,a:hover{
+ background: #f55efa;
+ transition: .5s;
+}
+.checkbtn
+{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check
+{
+display: none;
+}
+.feature-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feature-heading h2,
+.arrival-heading strong{
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #1b1919;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 40px;
+    padding: 5px 30px;
+    border: 1px solid #e0e0e0;
+}
+.feature-box{
+    width:155px;
+    height: 160px;
+    margin: 0px 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.feature-box a img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.item span{
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 5px;
+    color: #444444;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#autoWidth{
+    display: flex;
+    justify-content: center !important;
+    margin: 10px auto 40px auto;
+}
+@media (max-width:952px)
+{
+    label.logo{
+ font-size: 30px;
+ padding-left: 50px;
+    }
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+@media (max-width:858px)
+{
+    .checkbtn{
+        display: block;
+    }
+    ul {
+        position :absolute;
+        width:100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left:-100%;
+        text-align: center;
+        z-index: 102;
+        transition: all .5s;
+    }
+    nav ul li{
+        display:block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a 
+    {
+        font-size:20px;
+    }
+a:hover ,a.active 
+{
+    background:none;
+    color:#f55efa;
+}
+#check:checked ~ ul
+{
+    left:0;
+}
+}
+@media(max-width:600px){
+    .feature-heading h2{
+        font-size: 1.2rem;
+    }
+    .feature-box{
+        width:120px;
+        height: 120px;
+    }
+    .new-arrival strong,
+    .feature-heading strong{
+        font-size: 1.2rem;
+    }
+    .new-arrival p,
+    .feature-heading p{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}
+.product-container{
+    width:90%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.product-box{
+    display: flex;
+    flex-grow: 0.5;
+    flex-direction: column;
+  align-items: center;
+    border: 1px solid #f7f7f7;
+    border-radius: 10px;
+    margin: 20px;
+}
+.product-img{
+    width:200px;
+    height: 210px;
+    margin: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.product-img img{
+    width:100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid #f3f3f3;
+}
+.p-name{
+    color: #727272;
+}
+.p-price{
+    color: #333333;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.product-box:hover{
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+.add-cart{
+    position: absolute;
+    right: -20px;
+    top: 10px;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #0b9d8a;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+    display: none;
+    animation: fade 0.3s;
+ 
+}
+.add-cart:hover{
+    background-color: #f76ae4;
+    transition: all ease 0.2s;
+}
+.product-box:hover .add-cart{
+    display: flex;
+}
+.form
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 102;
+}
+  .login-form,.sign-up-form{
+      width: 420px;
+      padding: 20px 10px;
+      background-color: #ffffff;
+      box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 5px;
+      position: relative;
+
+  }
+  .login-form form,.sign-up-form form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+  }
+  .login-form strong,.sign-up-form strong 
+  {
+      color: #272727;
+      font-size: 2rem ;
+      margin: 2px 2px 7px 7px;
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+  }
+  .login-form input,.sign-up-form input{
+      width: 90%;
+      height: 45px;
+      margin: 6px 0px;
+      padding: 0px 10px;
+      border :1px solid rgba(0,0,0,0.1);
+      outline: none;
+      border-radius: 7px;
+  }
+  .login-form input::placeholder,
+  .sign-up-form input::placeholder
+  {
+color: rgba(0,0,0,0.5);
+  }
+  .login-form input[type="submit"],
+  .sign-up-form input[type="submit"]
+  {
+      background-color: #0b9d8a;
+      color: #ffffff;
+      border: none;
+      outline: none;
+      text-transform: uppercase;
+      margin-top: 10px;
+      border-radius: 3px;
+      box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+  }
+  .form-btns
+  {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+  }
+  .form-btns a{
+      color: #4d4d4d;
+      font-size: 0.9rem;
+  }
+  .sign-up-btn
+  {
+      border-bottom: 1px solid #868686;
+      line-height: 16px;
+  }
+  .form-cancel
+  {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      color: #868686;
+  }
+  .login-form,
+  .sign-up-form,
+  .form{
+      display: none;
+  }
+  .login-active,
+  .login-active .login-form
+  {
+      display: flex;
+      animation: fade 0.3s; 
+  }
+  .sign-up-active,
+  .sign-up-active .sign-up-form
+  {
+      display: flex;
+      animation: fade 0.3s; 
+  }
+  @keyframes fade{
+   0%{
+       opacity: 0;
+   }   
+   100%{
+       opacity: 1;
+   }
+  }
+  .container{
+      left:0;
+      width:100px;
+      height:90px;
+      top: 60%;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+  }
+  .checked
+  {
+      color:yellow;
+  }
+  .fix
+  {
+      height: 55px;
+      width: 100px;
+      justify-content: left;
+  }
+  .me{
+                padding-top: 80px;
+                padding-left: 200px;
+            }
+            ul{
+                list-style: none;
+                
+            }
+li{
+    line-height: 35px;
+}
+.stars
+            {
+                height:15px;
+            }
+            .price
+            {
+                color:#FE980F;
+                font-size: 26px;
+                font-weight: bold;
+                padding-top:5px;
+            }
+            input{
+                border :1px solid #ccc;
+                font-weight: bold;
+                height:33px;
+                text-align:center;
+                width:30px;
+            }
+            .cart
+            {
+                background: #FE980F;
+                color:#ffffff;
+                font-size:15px;
+                margin-left:20px;
+            }
+            .im
+            {
+                height: 300px;
+                width:300px;
+            }
+            
+            .foot
+            {
+                background-color: rgb(226, 43, 211);
+                padding-right: 0;
+                width:100%;
+            }
+</style>
+<link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"
+      />
+<script src="js.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" ></script>
+
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+        <label class="logo">Shopping</label>
+        <ul>
+            <li><a class="active" href="undex1.html"> Home</a></li>
+            <li><a href="n.html"> Man</a></li>
+            <li><a href="n1.html"> Women</a></li>
+            <li><a href="shop.html"> Shop</a></li>
+        </ul>
+    </nav>
+    <table class="me">
+        <tr>
+            <td><img src="sk7.jpg" class="im"/></td>
+            <td>
+                <ul class="c">
+                <li>    NEW</li>
+                <li>Skirt</li>
+                <li>    Product Code : ISRC2021</li>
+                <img src="stars.png" class="stars">
+                <p class="price">    RS 500</p>
+                <li><b>    Availability:</b>In stock</li>
+                <li><b>    Condition:</b>NEW</li>
+                <li><b>    Brand :</b> XYZ company</li>
+                <label>
+                    Quantity:
+                </label>
+                <input type="text" value="1">
+                <button type="button" class="btn btn-default cart"><a href="login.html">Shop</a></button>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <div class="feature-heading">
+        <h2>Featured Categories</h2>
+    </div>
+    <ul id="autoWidth" class="cs-hidden">
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk1.html">
+                    <img src="sk1.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk2.html">
+                    <img src="sk2.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk3.html">
+                    <img src="sk3.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk4.html">
+                    <img src="sk4.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk5.html">
+                    <img src="sk5.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk6.html">
+                    <img src="sk6.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+        <li class="item">
+            <div class="feature-box">
+                <a href="sk.html">
+                    <img src="sk.jpg"/>
+                </a>
+            </div>
+            <span>Skirt</span>
+        </li>
+      </ul>
+        <div class="form">
+            <div class="login-form">
+            <a href="javascript:void(0);" class="form-cancel">
+                <i class="fas fa-times"></i>
+            </a>
+            
+            <strong>Conformation</strong>
+            <form>
+            <strong>Do want to shop ?</strong>
+            </form>
+            <div class="form-btns">
+            <a href="javascript:void(0);" class="forget">No</a>
+            <a href="javascript:void(0);" class="sign-up-btn">Yes</a>
+            </div>
+            </div>
+            <div class="sign-up-form">
+                <a href="javascript:void(0);" class="form-cancel">
+                    <i class="fas fa-times"></i>
+                </a>
+                
+                <strong>Sign Up</strong>
+                <form>
+                    <input type="text" placeholder="Full name " name="fullname" required>
+                    <input type="email" placeholder="@gmail.com" name="Email" required>
+                    <input type="password" placeholder="Password?" name="Password" required>
+                    <input type="submit" value="Sign Up" class="submit">
+                </form>
+                <div class="form-btns">
+                <a href="javascript:void(0);" class="Already-account">Already have Account ?</a>
+                </div>
+                </div>
+            </div>
+            <footer>
+                <table class="foot">
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><b>Download Our App</b></li>
+                                <li>Download App for Andriod and ios mobile</li>
+                                <li><img src="play-store.png" class="item">
+                                <img src="app-store.png" class="item"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><img src="logo.jpg"></li>
+                                <li>Our purpose is to Sustainably Make the Pleasure<br> And Benefits of sports Accessible to the Many</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><b>Follow Us </b></li>
+                                <li><i class="fab fa-facebook-f"> Facebook</i></li>
+                                <li><i class="fab fa-twitter"> Twitter</i></li>
+                                <li><i class="fab fa-instagram"> Instagram</i></li>
+                                <li><i class="fab fa-youtube"> YouTube</i></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </footer>
+            <script type="text/javascript">
+            $(document).on('click','.add-cart,.Already-account',function(){
+		$('.form').addClass('login-active').removeClass('sign-up-active')
+	});
+	$(document).on('click','.sign-up-btn',function(){
+		$('.form').addClass('sign-up-active').removeClass('login-active')
+	});
+	$(document).on('click','.form-cancel,.forget',function(){
+		$('.form').removeClass('login-active').removeClass('sign-up-active')
+	});
+    $(document).on('click','.submit',function()
+    {
+    });
+    $(document).ready(function() {
+    $('#autoWidth').lightSlider({
+        autoWidth:true,
+        loop:true,
+        onSliderLoad: function() {
+            $('#autoWidth').removeClass('cs-hidden');
+        } 
+    });  
+  });
+  $(document).ready(function() {
+    $('#adaptive').lightSlider({
+        adaptiveHeight:true,
+		auto:true,
+        item:1,
+        slideMargin:0,
+        loop:true
+    });
+});
+            </script>
+</body>
+</html>
